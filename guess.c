@@ -1,12 +1,21 @@
 #include "guessing.h"
+#include <stdio.h>
 
-unsigned int guess_the_number(void)
+unsigned int guess_the_number(void) //lt. Aufgabenstellung darf dieser Header nicht verändert werden.
 {
 
-	/*
-	 * Enter your code here!
-	 * You should call evaluate(int), to check whether your number is correct.
-	 * E.g., evaluate(12345)
-	 */
-	return 1; // Return the correct number
+    int left = 0;
+    int right = 99999;
+    while (left <= right){
+		int mid = (left + right)/2;
+				if (evaluate(mid) == 0){
+					return mid;
+				} else if (evaluate(mid) == 1) {	// evaluate == 1 wenn mid < target
+					left = mid + 1;
+				} else if (evaluate(mid) == -1) {	// evaluate == -1 wenn mid > target
+					right = mid - 1;
+				}
+	}
+	return -1;
+
 }
