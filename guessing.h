@@ -1,3 +1,2 @@
 int evaluate(unsigned int guess);
-//unsigned int guess_the_number(void);
-int guess_the_number(void);
+unsigned int guess_the_number(void);
