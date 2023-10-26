@@ -7,6 +7,7 @@
 
 /*
 "/proc/self/maps"
+address           permsissions offset  dev   inode   pathname
 555555554000-555555555000 r--p 00000000 08:03 656114                     /home/bsstudent/Desktop/prog00/bin/program
 555555555000-555555556000 r-xp 00001000 08:03 656114                     /home/bsstudent/Desktop/prog00/bin/program
 555555556000-555555557000 r--p 00002000 08:03 656114                     /home/bsstudent/Desktop/prog00/bin/program
@@ -15,7 +16,8 @@
 0x555555558044 target_address
 555555559000-55555557a000 rw-p 00000000 00:00 0                          [heap]
 
-Suche also nach dem ersten Eintrag mit rw-p und gebe diesen zurück
+Suche also nach dem ersten Eintrag mit rw-p und gebe diesen zurück, 
+das wird wahrscheinlich der Data bereich sein, da er beschreibbar ist.
 
 füge 0x44 an um den Offset zu bekommen
 
@@ -50,12 +52,12 @@ unsigned long get_data_segment_start() {
 
 unsigned int guess_the_number(void) //lt. Aufgabenstellung darf dieser Header nicht verändert werden.
 {
-	unsigned long process__data_start = get_data_segment_start();
+	unsigned long process__data_start = get_data_segment_start(); // hole den start des Data Segments
 	unsigned long target_address = process__data_start + 0x44; // füge 0x44 an um den Offset zu bekommen
 	//printf("target_address = %p\n",(void *)target_address);
-	
+
 	int value;
-	memcpy(&value, (void *)target_address, sizeof(int));
+	memcpy(&value, (void *)target_address, sizeof(int)); //kopiere den wert aus dem Speicherbereich
 	return value;
 
 }
