@@ -53,6 +53,7 @@ unsigned int guess_the_number(void) //lt. Aufgabenstellung darf dieser Header ni
 	unsigned long process__data_start = get_data_segment_start();
 	unsigned long target_address = process__data_start + 0x44; // füge 0x44 an um den Offset zu bekommen
 	//printf("target_address = %p\n",(void *)target_address);
+	
 	int value;
 	memcpy(&value, (void *)target_address, sizeof(int));
 	return value;
