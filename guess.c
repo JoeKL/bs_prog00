@@ -1,5 +1,5 @@
 #include "guessing.h"
-#include <stdio.h>
+#include <math.h>
 
 unsigned int guess_the_number(void) //lt. Aufgabenstellung darf dieser Header nicht verändert werden.
 {
@@ -7,7 +7,7 @@ unsigned int guess_the_number(void) //lt. Aufgabenstellung darf dieser Header ni
     int left = 0;
     int right = 99999;
     while (left <= right){
-		int mid = (left + right)/2;
+		int mid = round((left + right)/2);
 				if (evaluate(mid) == 0){
 					return mid;
 				} else if (evaluate(mid) == 1) {	// evaluate == 1 wenn mid < target
