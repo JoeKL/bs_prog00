@@ -1,0 +1,26 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Compile C Program",
+        "type": "shell",
+        "command": "./make.sh",
+        "args": [
+          "compile"
+        ],
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        }
+      },
+      {
+        "label": "Clean C Program",
+        "type": "shell",
+        "command": "./make.sh",
+        "args": [
+          "clean"
+        ]
+      }
+    ]
+  }
+  
