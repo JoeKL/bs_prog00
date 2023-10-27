@@ -1,31 +1,28 @@
 #include "guessing.h"
+#include <stdio.h>
 
-int guess_the_number(void)
+unsigned int guess_the_number(void)
 {
+	int min = 0;
 	int mid = 0;
-	int max = 100000;
-	int guess = (max + mid) / 2;
-	mid = guess;
-	int tuer = 0;
-	//int correct = evaluate(mid);
+	int max = 99999;
+	int tuer = 1;
+	int correct = 2;
 	while(tuer) {
-		mid = guess;
-		int correct = evaluate(mid);
+		mid = (max + min) / 2;
+		correct = evaluate(mid);
 		switch(correct){
 		case 1 : 
 			// guess < target
-			guess = (max + mid) / 2;
-			mid = guess;
+			min = mid;
 			break;
 		case -1 : 
 			// guess > target
-			guess = mid / 2;
 			max = mid;
-			mid = guess;
 			break; 
 		case 0 :
 			// guess = target
-			tuer = 1;
+			tuer = 0;
 			break;
 		default:
 			break;
@@ -36,5 +33,5 @@ int guess_the_number(void)
 	 * You should call evaluate(int), to check whether your number is correct.
 	 * E.g., evaluate(12345)
 	 */
-	return guess; // Return the correct number
+	return mid; // Return the correct number
 }
