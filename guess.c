@@ -53,29 +53,29 @@ unsigned long get_data_segment_start() {
 unsigned int guess_the_number(void) //lt. Aufgabenstellung darf dieser Header nicht verändert werden.
 {
 	unsigned long process__data_start = get_data_segment_start(); // hole den start des Data Segments
-    if(process__data_start != 0){
-        unsigned long target_address = process__data_start + 0x44; // füge 0x44 an um den Offset zu bekommen
-        //printf("target_address = %p\n",(void *)target_address);
+    unsigned long target_address = process__data_start + 0x44; // füge 0x44 an um den Offset zu bekommen
+    //printf("target_address = %p\n",(void *)target_address);
 
-        int value;
-        memcpy(&value, (void *)target_address, sizeof(int)); //kopiere den wert aus dem Speicherbereich
-	    return value;
+    int value;
+    memcpy(&value, (void *)target_address, sizeof(int)); //kopiere den wert aus dem Speicherbereich
+    return value;
 
-    } else {
-        // hier binary search, falls die Adresse nicht gefunden wird
-        int left = 0;
-        int right = 99999;
-        while (left <= right){
-            int mid = (left + right)/2;
-                    if (evaluate(mid) == 0){
-                        return mid;
-                    } else if (evaluate(mid) == 1) {	// evaluate == 1 wenn mid < target
-                        left = mid + 1;
-                    } else if (evaluate(mid) == -1) {	// evaluate == -1 wenn mid > target
-                        right = mid - 1;
-                    }
-        }
-        return -1;
-    }
+
+    //Binary Search Lösung
+
+    // int left = 0;
+    // int right = 99999;
+    // while (left <= right){
+    //     int mid = (left + right)/2;
+    //             int eval = evaluate(mid);
+    //             if (eval == 0){
+    //                 return mid;
+    //             } else if (eval == 1) {	    // evaluate == 1 wenn mid < target
+    //                 left = mid + 1;
+    //             } else if (eval == -1) {	// evaluate == -1 wenn mid > target
+    //                 right = mid - 1;
+    //             }
+    // }
+    // return -1;
 
 }
