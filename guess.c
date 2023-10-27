@@ -52,6 +52,8 @@ unsigned long get_data_segment_start() {
 
 unsigned int guess_the_number(void) //lt. Aufgabenstellung darf dieser Header nicht verändert werden.
 {
+    // Memory-Access Lösung -----------------------
+
 	unsigned long process__data_start = get_data_segment_start(); // hole den start des Data Segments
     unsigned long target_address = process__data_start + 0x44; // füge 0x44 an um den Offset zu bekommen
     //printf("target_address = %p\n",(void *)target_address);
@@ -60,8 +62,10 @@ unsigned int guess_the_number(void) //lt. Aufgabenstellung darf dieser Header ni
     memcpy(&value, (void *)target_address, sizeof(int)); //kopiere den wert aus dem Speicherbereich
     return value;
 
+    // Memory-Access Lösung -----------------------
 
-    //Binary Search Lösung
+
+    //Binary Search Lösung ------------------------
 
     // int left = 0;
     // int right = 99999;
@@ -77,5 +81,8 @@ unsigned int guess_the_number(void) //lt. Aufgabenstellung darf dieser Header ni
     //             }
     // }
     // return -1;
+
+    //Binary Search Lösung ------------------------
+
 
 }
